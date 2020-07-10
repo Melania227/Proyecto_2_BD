@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Bloques]
 (
-	[IdBloques] INT NOT NULL PRIMARY KEY, 
+	[IdBloque] INT NOT NULL PRIMARY KEY, 
     [Nombre] NVARCHAR(50) NOT NULL, 
     [IdTeatro] INT NOT NULL, 
     [IdPrecioXBloque] INT NOT NULL, 

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Producciones]
 (
-	[IdProducciones] INT NOT NULL identity (0,1) PRIMARY KEY, 
+	[IdProduccion] INT NOT NULL identity (0,1) PRIMARY KEY, 
     [Descripcion] NVARCHAR(100) NOT NULL, 
     [NombrePresentacion] NVARCHAR(50) NOT NULL, 
     [Estado] NVARCHAR(10) NOT NULL, 

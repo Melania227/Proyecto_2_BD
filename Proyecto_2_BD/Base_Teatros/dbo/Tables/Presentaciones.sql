@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Presentaciones]
 (
-	[IdPresentaciones] INT NOT NULL identity (0,1) PRIMARY KEY, 
+	[IdPresentacion] INT NOT NULL identity (0,1) PRIMARY KEY, 
     [Fecha] DATE NOT NULL, 
     [Hora] TIME NOT NULL, 
     [IdProduccion] INT NOT NULL, 
-    CONSTRAINT [FK_Presentaciones_IdProduccion] FOREIGN KEY ([IdProduccion]) REFERENCES [Producciones]([IdProducciones]) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT [FK_Presentaciones_IdProduccion] FOREIGN KEY ([IdProduccion]) REFERENCES [Producciones]([IdProduccion]) ON DELETE CASCADE ON UPDATE CASCADE
 )
