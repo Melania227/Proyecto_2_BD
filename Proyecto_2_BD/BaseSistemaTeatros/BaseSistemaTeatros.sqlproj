@@ -61,5 +61,16 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Usuarios.sql" />
+    <Build Include="dbo\Tables\Teatros.sql" />
+    <Build Include="dbo\Tables\Humanos.sql" />
+    <Build Include="dbo\Tables\Bloques.sql" />
+    <Build Include="dbo\Tables\Boletos.sql" />
+    <Build Include="dbo\Tables\Filas.sql" />
+    <Build Include="dbo\Tables\Precio_X_Bloque.sql" />
+    <Build Include="dbo\Tables\Presentaciones.sql" />
+    <Build Include="dbo\Tables\Producciones.sql" />
+    <Build Include="dbo\Tables\TeatrosxAdmis.sql" />
+    <Build Include="dbo\Tables\Tipos_Produccion.sql" />
+    <Build Include="dbo\Tables\Transacciones.sql" />
   </ItemGroup>
 </Project>
