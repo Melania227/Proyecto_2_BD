@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_2_BD.Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,13 @@ namespace Proyecto_2_BD.Controllers
 {
     public class HomeController : Controller
     {
+ 
         public ActionResult Index()
         {
             return View();
         }
 
+        [AutorizarUsuarios(idOperacion: 0)]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

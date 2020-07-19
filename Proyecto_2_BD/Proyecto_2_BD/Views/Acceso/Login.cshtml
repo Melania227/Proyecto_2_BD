@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "Login";
+    //Layout = "~/Views/";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Creative - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~Content/assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 500px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+
+        button {
+            color: #fff;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            font-size: 1.5rem;
+        }
+
+            button:focus {
+                border: none;
+            }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+
+        .container2 {
+            padding: 16px;
+            width: 750px;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .c3 {
+            text-align: center;
+            padding-left: 110px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .page-section {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .bg-dark {
+            background-image: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('../../Content/assets/img/photo.jpg');
+        }
+    </style>
+</head>
+<body>
+    <section class="page-section bg-dark text-white">
+        <div class="container text-center">
+            <br>
+            <div class="imgcontainer">
+                <i class="fas fa-4x fa-user text-primary mb-4"></i>
+            </div>
+            <h2 class="text-center mt-0">Iniciar Sesión</h2>
+            <hr class="divider my-3" />
+        </div>
+    </section>
+    <div class="container text-center">
+        <form action="@Url.Content("~/Acceso/Login")" method="post">
+            <div class="container2">
+                @ViewBag.Error
+            </div>
+            <div class="container2">
+                <h3 class="h4 mb-2 c3">Usuario</h3>
+                <input type="text" placeholder="Ingrese usuario" name="uname" required>
+                <br>
+                <br>
+                <h3 class="h4 mb-2 c3">Contraseña</h3>
+                <input type="password" placeholder="Ingrese contraseña" name="psw" required>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+ @if (ViewBag.Msg != null)
+    {
+        bool result = ViewBag.Msg;
+
+        if (result)
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                    window.location.href = "/Home/About"
+                }
+            </script>
+        }
+        else
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                    alert("Error, usuario o contraseña incorrecto.");
+                    window.location.href = "/Acceso/Login"
+                }
+            </script>
+        }
+    }

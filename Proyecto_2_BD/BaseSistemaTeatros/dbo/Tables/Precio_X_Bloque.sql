@@ -3,5 +3,7 @@
 	[IdPrecioXBloque] INT NOT NULL identity (0,1) PRIMARY KEY, 
     [Precio] DECIMAL(10, 2) NOT NULL, 
     [IdProduccion] INT NOT NULL, 
-    CONSTRAINT [FK_PrecioXBloque_IdProduccion] FOREIGN KEY ([IdProduccion]) REFERENCES [Producciones]([IdProduccion])
+    [IdBloque] INT NOT NULL, 
+    CONSTRAINT [FK_PrecioXBloque_IdProduccion] FOREIGN KEY ([IdProduccion]) REFERENCES [Producciones]([IdProduccion]) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT [FK_PrecioXBloque_IdBloque] FOREIGN KEY ([IdBloque]) REFERENCES [Bloques]([IdBloque]) ON DELETE CASCADE ON UPDATE CASCADE
 )

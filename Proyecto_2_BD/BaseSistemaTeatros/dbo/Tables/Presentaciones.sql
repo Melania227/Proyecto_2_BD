@@ -4,5 +4,5 @@
     [Fecha] DATE NOT NULL, 
     [Hora] TIME NOT NULL, 
     [IdProduccion] INT NOT NULL, 
-    CONSTRAINT [FK_Presentaciones_IdProduccion] FOREIGN KEY ([IdProduccion]) REFERENCES [Producciones]([IdProduccion])
+    CONSTRAINT [FK_Presentaciones_IdProduccion] FOREIGN KEY ([IdProduccion]) REFERENCES [Producciones]([IdProduccion]) 
 )

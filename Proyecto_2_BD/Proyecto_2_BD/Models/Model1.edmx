@@ -1,0 +1,1288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Proyecto_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bloques">
+          <Key>
+            <PropertyRef Name="IdBloque" />
+          </Key>
+          <Property Name="IdBloque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdTeatro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Boletos">
+          <Key>
+            <PropertyRef Name="NumBoleto" />
+          </Key>
+          <Property Name="NumBoleto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFila" Type="int" Nullable="false" />
+          <Property Name="IdPresentacion" Type="int" Nullable="false" />
+          <Property Name="IdPrecioXBloque" Type="int" Nullable="false" />
+          <Property Name="NumAsiento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Filas">
+          <Key>
+            <PropertyRef Name="IdFila" />
+          </Key>
+          <Property Name="IdFila" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Letra" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="CantAsientos" Type="int" Nullable="false" />
+          <Property Name="IdBloque" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Humanos">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fec_Nacimiento" Type="date" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="NumCasa" Type="int" />
+          <Property Name="NumTelefono" Type="int" Nullable="false" />
+          <Property Name="NumOtro" Type="int" />
+        </EntityType>
+        <EntityType Name="Precio_X_Bloque">
+          <Key>
+            <PropertyRef Name="IdPrecioXBloque" />
+          </Key>
+          <Property Name="IdPrecioXBloque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IdProduccion" Type="int" Nullable="false" />
+          <Property Name="IdBloque" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Presentaciones">
+          <Key>
+            <PropertyRef Name="IdPresentacion" />
+          </Key>
+          <Property Name="IdPresentacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IdProduccion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producciones">
+          <Key>
+            <PropertyRef Name="IdProduccion" />
+          </Key>
+          <Property Name="IdProduccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NombrePresentacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin" Type="date" />
+          <Property Name="IdTeatro" Type="int" Nullable="false" />
+          <Property Name="IdTipoProd" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teatros">
+          <Key>
+            <PropertyRef Name="IdTeatro" />
+          </Key>
+          <Property Name="IdTeatro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelServicioCliente" Type="int" Nullable="false" />
+          <Property Name="TelTeatro" Type="int" />
+          <Property Name="TelBoletaria" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="LinkWeb" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TeatrosxAdmis">
+          <Key>
+            <PropertyRef Name="IdUsuario_X" />
+            <PropertyRef Name="IdTeatro_X" />
+          </Key>
+          <Property Name="IdUsuario_X" Type="int" Nullable="false" />
+          <Property Name="IdTeatro_X" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipos_Produccion">
+          <Key>
+            <PropertyRef Name="IdTipoProd" />
+          </Key>
+          <Property Name="IdTipoProd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="NumFactura" />
+          </Key>
+          <Property Name="NumFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="int" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TipoTransaccion" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NumAprobacion" Type="int" Nullable="false" />
+          <Property Name="NumBoleto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="164" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
+          <Property Name="IdTeatro_usuarios" Type="int" />
+          <Property Name="IdUsuarioHumano" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bloques_IdTeatro">
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bloques" Type="Self.Bloques" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teatros">
+              <PropertyRef Name="IdTeatro" />
+            </Principal>
+            <Dependent Role="Bloques">
+              <PropertyRef Name="IdTeatro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Boletos_IdFila">
+          <End Role="Filas" Type="Self.Filas" Multiplicity="1" />
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Filas">
+              <PropertyRef Name="IdFila" />
+            </Principal>
+            <Dependent Role="Boletos">
+              <PropertyRef Name="IdFila" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Boletos_IdPrecioXBloque">
+          <End Role="Precio_X_Bloque" Type="Self.Precio_X_Bloque" Multiplicity="1" />
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Precio_X_Bloque">
+              <PropertyRef Name="IdPrecioXBloque" />
+            </Principal>
+            <Dependent Role="Boletos">
+              <PropertyRef Name="IdPrecioXBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Boletos_IdPresentacion">
+          <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="1" />
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentaciones">
+              <PropertyRef Name="IdPresentacion" />
+            </Principal>
+            <Dependent Role="Boletos">
+              <PropertyRef Name="IdPresentacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filas_IdBloques">
+          <End Role="Bloques" Type="Self.Bloques" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Filas" Type="Self.Filas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloques">
+              <PropertyRef Name="IdBloque" />
+            </Principal>
+            <Dependent Role="Filas">
+              <PropertyRef Name="IdBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Humanos_Usuario">
+          <End Role="Humanos" Type="Self.Humanos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Humanos">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdUsuarioHumano" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrecioXBloque_IdBloque">
+          <End Role="Bloques" Type="Self.Bloques" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Precio_X_Bloque" Type="Self.Precio_X_Bloque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloques">
+              <PropertyRef Name="IdBloque" />
+            </Principal>
+            <Dependent Role="Precio_X_Bloque">
+              <PropertyRef Name="IdBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrecioXBloque_IdProduccion">
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Precio_X_Bloque" Type="Self.Precio_X_Bloque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producciones">
+              <PropertyRef Name="IdProduccion" />
+            </Principal>
+            <Dependent Role="Precio_X_Bloque">
+              <PropertyRef Name="IdProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentaciones_IdProduccion">
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="1" />
+          <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producciones">
+              <PropertyRef Name="IdProduccion" />
+            </Principal>
+            <Dependent Role="Presentaciones">
+              <PropertyRef Name="IdProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producciones_IdTeatro">
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="1" />
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teatros">
+              <PropertyRef Name="IdTeatro" />
+            </Principal>
+            <Dependent Role="Producciones">
+              <PropertyRef Name="IdTeatro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producciones_TipoProduccion">
+          <End Role="Tipos_Produccion" Type="Self.Tipos_Produccion" Multiplicity="1" />
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipos_Produccion">
+              <PropertyRef Name="IdTipoProd" />
+            </Principal>
+            <Dependent Role="Producciones">
+              <PropertyRef Name="IdTipoProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teatros_Admis_Teatros">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="TeatrosxAdmis" Type="Self.TeatrosxAdmis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="TeatrosxAdmis">
+              <PropertyRef Name="IdTeatro_X" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teatros_Admis_Usuarios">
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TeatrosxAdmis" Type="Self.TeatrosxAdmis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teatros">
+              <PropertyRef Name="IdTeatro" />
+            </Principal>
+            <Dependent Role="TeatrosxAdmis">
+              <PropertyRef Name="IdUsuario_X" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transacciones_NumBoleto">
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boletos">
+              <PropertyRef Name="NumBoleto" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="NumBoleto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Teatro">
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teatros">
+              <PropertyRef Name="IdTeatro" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdTeatro_usuarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spAddPrecioBloquePorProduccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdBloque" Type="int" Mode="In" />
+          <Parameter Name="IdProduccion" Type="int" Mode="In" />
+          <Parameter Name="Precio" Type="decimal" Mode="In" />
+          <Parameter Name="ReturnMessage" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spAddUnaProduccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="NombrePresentacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdTeatro" Type="int" Mode="In" />
+          <Parameter Name="IdTipoProd" Type="int" Mode="In" />
+          <Parameter Name="IdCreador" Type="int" Mode="In" />
+          <Parameter Name="ReturnMessage" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spAddUnHumano" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cedula" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="nvarchar" Mode="In" />
+          <Parameter Name="Fec_Nacimiento" Type="date" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sexo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Numcasa" Type="int" Mode="In" />
+          <Parameter Name="NumTelefono" Type="int" Mode="In" />
+          <Parameter Name="NumOtro" Type="int" Mode="In" />
+          <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spAddUnPresentacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdProduccion" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+          <Parameter Name="Hora" Type="time" Mode="In" />
+          <Parameter Name="ReturnMessage" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spAddUnTeatro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCreador" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="TelTeatro" Type="int" Mode="In" />
+          <Parameter Name="TelBoleteria" Type="int" Mode="In" />
+          <Parameter Name="TelServicioCliente" Type="int" Mode="In" />
+          <Parameter Name="ReturnMessage" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spAddUnTipoProduccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tipo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spAddUnUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCreador" Type="int" Mode="In" />
+          <Parameter Name="IdUsuarioHumano" Type="int" Mode="In" />
+          <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tipo" Type="int" Mode="In" />
+          <Parameter Name="IdTeatroHumano" Type="int" Mode="In" />
+          <Parameter Name="ReturnMessage" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spAsientosNoDisponiblesEnBloque" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdBloque" Type="int" Mode="In" />
+          <Parameter Name="IdPresentacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAuthenticationUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="spAuthenticationUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spDefineBloque" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTeatro" Type="int" Mode="In" />
+          <Parameter Name="NombreBloque" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReturnMessage" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spDefineFilas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdBloque" Type="int" Mode="In" />
+          <Parameter Name="LetraFila" Type="nvarchar" Mode="In" />
+          <Parameter Name="CantAsientos" Type="int" Mode="In" />
+          <Parameter Name="ReturnMessage" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spFindBloquesForPresentacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPresentacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spFindFilasForBloque" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdBloque" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spFindPrecioXBloque" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdBloque" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetPresentacionesOfProduccionBetweenDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFinal" Type="date" Mode="In" />
+          <Parameter Name="IdProduccion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetProduccionesBetweenDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFinal" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spGetTypeOfUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spRevisarFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdProduccionR" Type="int" Mode="In" />
+          <Parameter Name="FechaR" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spUpdateEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="IdProduccion" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Proyecto_2ModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bloques" EntityType="Self.Bloques" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Boletos" EntityType="Self.Boletos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Filas" EntityType="Self.Filas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Humanos" EntityType="Self.Humanos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Precio_X_Bloque" EntityType="Self.Precio_X_Bloque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presentaciones" EntityType="Self.Presentaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producciones" EntityType="Self.Producciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teatros" EntityType="Self.Teatros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeatrosxAdmis" EntityType="Self.TeatrosxAdmis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipos_Produccion" EntityType="Self.Tipos_Produccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bloques_IdTeatro" Association="Self.FK_Bloques_IdTeatro">
+            <End Role="Teatros" EntitySet="Teatros" />
+            <End Role="Bloques" EntitySet="Bloques" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Boletos_IdFila" Association="Self.FK_Boletos_IdFila">
+            <End Role="Filas" EntitySet="Filas" />
+            <End Role="Boletos" EntitySet="Boletos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Boletos_IdPrecioXBloque" Association="Self.FK_Boletos_IdPrecioXBloque">
+            <End Role="Precio_X_Bloque" EntitySet="Precio_X_Bloque" />
+            <End Role="Boletos" EntitySet="Boletos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Boletos_IdPresentacion" Association="Self.FK_Boletos_IdPresentacion">
+            <End Role="Presentaciones" EntitySet="Presentaciones" />
+            <End Role="Boletos" EntitySet="Boletos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filas_IdBloques" Association="Self.FK_Filas_IdBloques">
+            <End Role="Bloques" EntitySet="Bloques" />
+            <End Role="Filas" EntitySet="Filas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Humanos_Usuario" Association="Self.FK_Humanos_Usuario">
+            <End Role="Humanos" EntitySet="Humanos" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrecioXBloque_IdBloque" Association="Self.FK_PrecioXBloque_IdBloque">
+            <End Role="Bloques" EntitySet="Bloques" />
+            <End Role="Precio_X_Bloque" EntitySet="Precio_X_Bloque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrecioXBloque_IdProduccion" Association="Self.FK_PrecioXBloque_IdProduccion">
+            <End Role="Producciones" EntitySet="Producciones" />
+            <End Role="Precio_X_Bloque" EntitySet="Precio_X_Bloque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentaciones_IdProduccion" Association="Self.FK_Presentaciones_IdProduccion">
+            <End Role="Producciones" EntitySet="Producciones" />
+            <End Role="Presentaciones" EntitySet="Presentaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producciones_IdTeatro" Association="Self.FK_Producciones_IdTeatro">
+            <End Role="Teatros" EntitySet="Teatros" />
+            <End Role="Producciones" EntitySet="Producciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producciones_TipoProduccion" Association="Self.FK_Producciones_TipoProduccion">
+            <End Role="Tipos_Produccion" EntitySet="Tipos_Produccion" />
+            <End Role="Producciones" EntitySet="Producciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teatros_Admis_Teatros" Association="Self.FK_Teatros_Admis_Teatros">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="TeatrosxAdmis" EntitySet="TeatrosxAdmis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teatros_Admis_Usuarios" Association="Self.FK_Teatros_Admis_Usuarios">
+            <End Role="Teatros" EntitySet="Teatros" />
+            <End Role="TeatrosxAdmis" EntitySet="TeatrosxAdmis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transacciones_NumBoleto" Association="Self.FK_Transacciones_NumBoleto">
+            <End Role="Boletos" EntitySet="Boletos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Teatro" Association="Self.FK_Usuarios_Teatro">
+            <End Role="Teatros" EntitySet="Teatros" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Proyecto_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bloques">
+          <Key>
+            <PropertyRef Name="IdBloque" />
+          </Key>
+          <Property Name="IdBloque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTeatro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Teatros" Relationship="Self.FK_Bloques_IdTeatro" FromRole="Bloques" ToRole="Teatros" />
+          <NavigationProperty Name="Filas" Relationship="Self.FK_Filas_IdBloques" FromRole="Bloques" ToRole="Filas" />
+          <NavigationProperty Name="Precio_X_Bloque" Relationship="Self.FK_PrecioXBloque_IdBloque" FromRole="Bloques" ToRole="Precio_X_Bloque" />
+        </EntityType>
+        <EntityType Name="Boletos">
+          <Key>
+            <PropertyRef Name="NumBoleto" />
+          </Key>
+          <Property Name="NumBoleto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFila" Type="Int32" Nullable="false" />
+          <Property Name="IdPresentacion" Type="Int32" Nullable="false" />
+          <Property Name="IdPrecioXBloque" Type="Int32" Nullable="false" />
+          <Property Name="NumAsiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Filas" Relationship="Self.FK_Boletos_IdFila" FromRole="Boletos" ToRole="Filas" />
+          <NavigationProperty Name="Precio_X_Bloque" Relationship="Self.FK_Boletos_IdPrecioXBloque" FromRole="Boletos" ToRole="Precio_X_Bloque" />
+          <NavigationProperty Name="Presentaciones" Relationship="Self.FK_Boletos_IdPresentacion" FromRole="Boletos" ToRole="Presentaciones" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.FK_Transacciones_NumBoleto" FromRole="Boletos" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="Filas">
+          <Key>
+            <PropertyRef Name="IdFila" />
+          </Key>
+          <Property Name="IdFila" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Letra" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CantAsientos" Type="Int32" Nullable="false" />
+          <Property Name="IdBloque" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bloques" Relationship="Self.FK_Filas_IdBloques" FromRole="Filas" ToRole="Bloques" />
+          <NavigationProperty Name="Boletos" Relationship="Self.FK_Boletos_IdFila" FromRole="Filas" ToRole="Boletos" />
+        </EntityType>
+        <EntityType Name="Humanos">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fec_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumCasa" Type="Int32" />
+          <Property Name="NumTelefono" Type="Int32" Nullable="false" />
+          <Property Name="NumOtro" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Humanos_Usuario" FromRole="Humanos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Precio_X_Bloque">
+          <Key>
+            <PropertyRef Name="IdPrecioXBloque" />
+          </Key>
+          <Property Name="IdPrecioXBloque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IdProduccion" Type="Int32" Nullable="false" />
+          <Property Name="IdBloque" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bloques" Relationship="Self.FK_PrecioXBloque_IdBloque" FromRole="Precio_X_Bloque" ToRole="Bloques" />
+          <NavigationProperty Name="Boletos" Relationship="Self.FK_Boletos_IdPrecioXBloque" FromRole="Precio_X_Bloque" ToRole="Boletos" />
+          <NavigationProperty Name="Producciones" Relationship="Self.FK_PrecioXBloque_IdProduccion" FromRole="Precio_X_Bloque" ToRole="Producciones" />
+        </EntityType>
+        <EntityType Name="Presentaciones">
+          <Key>
+            <PropertyRef Name="IdPresentacion" />
+          </Key>
+          <Property Name="IdPresentacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IdProduccion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Boletos" Relationship="Self.FK_Boletos_IdPresentacion" FromRole="Presentaciones" ToRole="Boletos" />
+          <NavigationProperty Name="Producciones" Relationship="Self.FK_Presentaciones_IdProduccion" FromRole="Presentaciones" ToRole="Producciones" />
+        </EntityType>
+        <EntityType Name="Producciones">
+          <Key>
+            <PropertyRef Name="IdProduccion" />
+          </Key>
+          <Property Name="IdProduccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombrePresentacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Precision="0" />
+          <Property Name="IdTeatro" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoProd" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Precio_X_Bloque" Relationship="Self.FK_PrecioXBloque_IdProduccion" FromRole="Producciones" ToRole="Precio_X_Bloque" />
+          <NavigationProperty Name="Presentaciones" Relationship="Self.FK_Presentaciones_IdProduccion" FromRole="Producciones" ToRole="Presentaciones" />
+          <NavigationProperty Name="Teatros" Relationship="Self.FK_Producciones_IdTeatro" FromRole="Producciones" ToRole="Teatros" />
+          <NavigationProperty Name="Tipos_Produccion" Relationship="Self.FK_Producciones_TipoProduccion" FromRole="Producciones" ToRole="Tipos_Produccion" />
+        </EntityType>
+        <EntityType Name="Teatros">
+          <Key>
+            <PropertyRef Name="IdTeatro" />
+          </Key>
+          <Property Name="IdTeatro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TelServicioCliente" Type="Int32" Nullable="false" />
+          <Property Name="TelTeatro" Type="Int32" />
+          <Property Name="TelBoletaria" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LinkWeb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bloques" Relationship="Self.FK_Bloques_IdTeatro" FromRole="Teatros" ToRole="Bloques" />
+          <NavigationProperty Name="Producciones" Relationship="Self.FK_Producciones_IdTeatro" FromRole="Teatros" ToRole="Producciones" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Teatro" FromRole="Teatros" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuarios1" Relationship="Self.TeatrosxAdmis" FromRole="Teatros" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Tipos_Produccion">
+          <Key>
+            <PropertyRef Name="IdTipoProd" />
+          </Key>
+          <Property Name="IdTipoProd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Producciones" Relationship="Self.FK_Producciones_TipoProduccion" FromRole="Tipos_Produccion" ToRole="Producciones" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="NumFactura" />
+          </Key>
+          <Property Name="NumFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="Int32" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TipoTransaccion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumAprobacion" Type="Int32" Nullable="false" />
+          <Property Name="NumBoleto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Boletos" Relationship="Self.FK_Transacciones_NumBoleto" FromRole="Transacciones" ToRole="Boletos" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="164" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="IdTeatro_usuarios" Type="Int32" />
+          <Property Name="IdUsuarioHumano" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Humanos" Relationship="Self.FK_Humanos_Usuario" FromRole="Usuarios" ToRole="Humanos" />
+          <NavigationProperty Name="Teatros" Relationship="Self.FK_Usuarios_Teatro" FromRole="Usuarios" ToRole="Teatros" />
+          <NavigationProperty Name="Teatros1" Relationship="Self.TeatrosxAdmis" FromRole="Usuarios" ToRole="Teatros" />
+        </EntityType>
+        <Association Name="FK_Bloques_IdTeatro">
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bloques" Type="Self.Bloques" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teatros">
+              <PropertyRef Name="IdTeatro" />
+            </Principal>
+            <Dependent Role="Bloques">
+              <PropertyRef Name="IdTeatro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filas_IdBloques">
+          <End Role="Bloques" Type="Self.Bloques" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Filas" Type="Self.Filas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloques">
+              <PropertyRef Name="IdBloque" />
+            </Principal>
+            <Dependent Role="Filas">
+              <PropertyRef Name="IdBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrecioXBloque_IdBloque">
+          <End Role="Bloques" Type="Self.Bloques" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Precio_X_Bloque" Type="Self.Precio_X_Bloque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bloques">
+              <PropertyRef Name="IdBloque" />
+            </Principal>
+            <Dependent Role="Precio_X_Bloque">
+              <PropertyRef Name="IdBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Boletos_IdFila">
+          <End Role="Filas" Type="Self.Filas" Multiplicity="1" />
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Filas">
+              <PropertyRef Name="IdFila" />
+            </Principal>
+            <Dependent Role="Boletos">
+              <PropertyRef Name="IdFila" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Boletos_IdPrecioXBloque">
+          <End Role="Precio_X_Bloque" Type="Self.Precio_X_Bloque" Multiplicity="1" />
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Precio_X_Bloque">
+              <PropertyRef Name="IdPrecioXBloque" />
+            </Principal>
+            <Dependent Role="Boletos">
+              <PropertyRef Name="IdPrecioXBloque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Boletos_IdPresentacion">
+          <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="1" />
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentaciones">
+              <PropertyRef Name="IdPresentacion" />
+            </Principal>
+            <Dependent Role="Boletos">
+              <PropertyRef Name="IdPresentacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transacciones_NumBoleto">
+          <End Role="Boletos" Type="Self.Boletos" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boletos">
+              <PropertyRef Name="NumBoleto" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="NumBoleto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Humanos_Usuario">
+          <End Role="Humanos" Type="Self.Humanos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Humanos">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdUsuarioHumano" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrecioXBloque_IdProduccion">
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Precio_X_Bloque" Type="Self.Precio_X_Bloque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producciones">
+              <PropertyRef Name="IdProduccion" />
+            </Principal>
+            <Dependent Role="Precio_X_Bloque">
+              <PropertyRef Name="IdProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentaciones_IdProduccion">
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="1" />
+          <End Role="Presentaciones" Type="Self.Presentaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producciones">
+              <PropertyRef Name="IdProduccion" />
+            </Principal>
+            <Dependent Role="Presentaciones">
+              <PropertyRef Name="IdProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producciones_IdTeatro">
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="1" />
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teatros">
+              <PropertyRef Name="IdTeatro" />
+            </Principal>
+            <Dependent Role="Producciones">
+              <PropertyRef Name="IdTeatro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producciones_TipoProduccion">
+          <End Role="Tipos_Produccion" Type="Self.Tipos_Produccion" Multiplicity="1" />
+          <End Role="Producciones" Type="Self.Producciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipos_Produccion">
+              <PropertyRef Name="IdTipoProd" />
+            </Principal>
+            <Dependent Role="Producciones">
+              <PropertyRef Name="IdTipoProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Teatro">
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teatros">
+              <PropertyRef Name="IdTeatro" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdTeatro_usuarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TeatrosxAdmis">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <End Role="Teatros" Type="Self.Teatros" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Proyecto_2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Bloques" EntityType="Self.Bloques" />
+          <EntitySet Name="Boletos" EntityType="Self.Boletos" />
+          <EntitySet Name="Filas" EntityType="Self.Filas" />
+          <EntitySet Name="Humanos" EntityType="Self.Humanos" />
+          <EntitySet Name="Precio_X_Bloque" EntityType="Self.Precio_X_Bloque" />
+          <EntitySet Name="Presentaciones" EntityType="Self.Presentaciones" />
+          <EntitySet Name="Producciones" EntityType="Self.Producciones" />
+          <EntitySet Name="Teatros" EntityType="Self.Teatros" />
+          <EntitySet Name="Tipos_Produccion" EntityType="Self.Tipos_Produccion" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Bloques_IdTeatro" Association="Self.FK_Bloques_IdTeatro">
+            <End Role="Teatros" EntitySet="Teatros" />
+            <End Role="Bloques" EntitySet="Bloques" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filas_IdBloques" Association="Self.FK_Filas_IdBloques">
+            <End Role="Bloques" EntitySet="Bloques" />
+            <End Role="Filas" EntitySet="Filas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrecioXBloque_IdBloque" Association="Self.FK_PrecioXBloque_IdBloque">
+            <End Role="Bloques" EntitySet="Bloques" />
+            <End Role="Precio_X_Bloque" EntitySet="Precio_X_Bloque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Boletos_IdFila" Association="Self.FK_Boletos_IdFila">
+            <End Role="Filas" EntitySet="Filas" />
+            <End Role="Boletos" EntitySet="Boletos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Boletos_IdPrecioXBloque" Association="Self.FK_Boletos_IdPrecioXBloque">
+            <End Role="Precio_X_Bloque" EntitySet="Precio_X_Bloque" />
+            <End Role="Boletos" EntitySet="Boletos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Boletos_IdPresentacion" Association="Self.FK_Boletos_IdPresentacion">
+            <End Role="Presentaciones" EntitySet="Presentaciones" />
+            <End Role="Boletos" EntitySet="Boletos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transacciones_NumBoleto" Association="Self.FK_Transacciones_NumBoleto">
+            <End Role="Boletos" EntitySet="Boletos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Humanos_Usuario" Association="Self.FK_Humanos_Usuario">
+            <End Role="Humanos" EntitySet="Humanos" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrecioXBloque_IdProduccion" Association="Self.FK_PrecioXBloque_IdProduccion">
+            <End Role="Producciones" EntitySet="Producciones" />
+            <End Role="Precio_X_Bloque" EntitySet="Precio_X_Bloque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentaciones_IdProduccion" Association="Self.FK_Presentaciones_IdProduccion">
+            <End Role="Producciones" EntitySet="Producciones" />
+            <End Role="Presentaciones" EntitySet="Presentaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producciones_IdTeatro" Association="Self.FK_Producciones_IdTeatro">
+            <End Role="Teatros" EntitySet="Teatros" />
+            <End Role="Producciones" EntitySet="Producciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producciones_TipoProduccion" Association="Self.FK_Producciones_TipoProduccion">
+            <End Role="Tipos_Produccion" EntitySet="Tipos_Produccion" />
+            <End Role="Producciones" EntitySet="Producciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Teatro" Association="Self.FK_Usuarios_Teatro">
+            <End Role="Teatros" EntitySet="Teatros" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="TeatrosxAdmis" Association="Self.TeatrosxAdmis">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Teatros" EntitySet="Teatros" />
+          </AssociationSet>
+          <FunctionImport Name="spAddPrecioBloquePorProduccion">
+            <Parameter Name="IdBloque" Mode="In" Type="Int32" />
+            <Parameter Name="IdProduccion" Mode="In" Type="Int32" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUnaProduccion">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="NombrePresentacion" Mode="In" Type="String" />
+            <Parameter Name="IdTeatro" Mode="In" Type="Int32" />
+            <Parameter Name="IdTipoProd" Mode="In" Type="Int32" />
+            <Parameter Name="IdCreador" Mode="In" Type="Int32" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUnHumano">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
+            <Parameter Name="Fec_Nacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Numcasa" Mode="In" Type="Int32" />
+            <Parameter Name="NumTelefono" Mode="In" Type="Int32" />
+            <Parameter Name="NumOtro" Mode="In" Type="Int32" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUnPresentacion">
+            <Parameter Name="IdProduccion" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Hora" Mode="In" Type="Time" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUnTeatro">
+            <Parameter Name="IdCreador" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="TelTeatro" Mode="In" Type="Int32" />
+            <Parameter Name="TelBoleteria" Mode="In" Type="Int32" />
+            <Parameter Name="TelServicioCliente" Mode="In" Type="Int32" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUnTipoProduccion">
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUnUsuario">
+            <Parameter Name="IdCreador" Mode="In" Type="Int32" />
+            <Parameter Name="IdUsuarioHumano" Mode="In" Type="Int32" />
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Tipo" Mode="In" Type="Int32" />
+            <Parameter Name="IdTeatroHumano" Mode="In" Type="Int32" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAsientosNoDisponiblesEnBloque" ReturnType="Collection(Int32)">
+            <Parameter Name="IdBloque" Mode="In" Type="Int32" />
+            <Parameter Name="IdPresentacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAuthenticationUser" ReturnType="Collection(String)">
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAuthenticationUserName" ReturnType="Collection(Int32)">
+            <Parameter Name="User" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDefineBloque">
+            <Parameter Name="IdTeatro" Mode="In" Type="Int32" />
+            <Parameter Name="NombreBloque" Mode="In" Type="String" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDefineFilas">
+            <Parameter Name="IdBloque" Mode="In" Type="Int32" />
+            <Parameter Name="LetraFila" Mode="In" Type="String" />
+            <Parameter Name="CantAsientos" Mode="In" Type="Int32" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFindBloquesForPresentacion" ReturnType="Collection(Proyecto_2Model.spFindBloquesForPresentacion_Result)">
+            <Parameter Name="IdPresentacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFindFilasForBloque" ReturnType="Collection(Proyecto_2Model.spFindFilasForBloque_Result)">
+            <Parameter Name="IdBloque" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFindPrecioXBloque" ReturnType="Collection(Decimal)">
+            <Parameter Name="IdBloque" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetPresentacionesOfProduccionBetweenDates" ReturnType="Collection(Proyecto_2Model.spGetPresentacionesOfProduccionBetweenDates_Result)">
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+            <Parameter Name="IdProduccion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetProduccionesBetweenDates" ReturnType="Collection(Proyecto_2Model.spGetProduccionesBetweenDates_Result)">
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spGetTypeOfUser" ReturnType="Collection(Proyecto_2Model.spGetTypeOfUser_Result)">
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spRevisarFecha">
+            <Parameter Name="IdProduccionR" Mode="In" Type="Int32" />
+            <Parameter Name="FechaR" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateEstado">
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="IdProduccion" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spFindBloquesForPresentacion_Result">
+          <Property Type="Int32" Name="IdBloque" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spFindFilasForBloque_Result">
+          <Property Type="Int32" Name="IdFila" Nullable="false" />
+          <Property Type="String" Name="Letra" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="CantAsientos" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetPresentacionesOfProduccionBetweenDates_Result">
+          <Property Type="Int32" Name="IdPresentacion" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Time" Name="Hora" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetProduccionesBetweenDates_Result">
+          <Property Type="Int32" Name="IdProduccion" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NombrePresentacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="true" />
+          <Property Type="DateTime" Name="FechaFin" Nullable="true" />
+          <Property Type="Int32" Name="IdTeatro" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoProd" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetTypeOfUser_Result">
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="164" />
+          <Property Type="Int32" Name="Tipo" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Proyecto_2ModelStoreContainer" CdmEntityContainer="Proyecto_2Entities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="Proyecto_2Model.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bloques">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Bloques">
+              <MappingFragment StoreEntitySet="Bloques">
+                <ScalarProperty Name="IdBloque" ColumnName="IdBloque" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTeatro" ColumnName="IdTeatro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Boletos">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Boletos">
+              <MappingFragment StoreEntitySet="Boletos">
+                <ScalarProperty Name="NumBoleto" ColumnName="NumBoleto" />
+                <ScalarProperty Name="IdFila" ColumnName="IdFila" />
+                <ScalarProperty Name="IdPresentacion" ColumnName="IdPresentacion" />
+                <ScalarProperty Name="IdPrecioXBloque" ColumnName="IdPrecioXBloque" />
+                <ScalarProperty Name="NumAsiento" ColumnName="NumAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filas">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Filas">
+              <MappingFragment StoreEntitySet="Filas">
+                <ScalarProperty Name="IdFila" ColumnName="IdFila" />
+                <ScalarProperty Name="Letra" ColumnName="Letra" />
+                <ScalarProperty Name="CantAsientos" ColumnName="CantAsientos" />
+                <ScalarProperty Name="IdBloque" ColumnName="IdBloque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Humanos">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Humanos">
+              <MappingFragment StoreEntitySet="Humanos">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Fec_Nacimiento" ColumnName="Fec_Nacimiento" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="NumCasa" ColumnName="NumCasa" />
+                <ScalarProperty Name="NumTelefono" ColumnName="NumTelefono" />
+                <ScalarProperty Name="NumOtro" ColumnName="NumOtro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precio_X_Bloque">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Precio_X_Bloque">
+              <MappingFragment StoreEntitySet="Precio_X_Bloque">
+                <ScalarProperty Name="IdPrecioXBloque" ColumnName="IdPrecioXBloque" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IdProduccion" ColumnName="IdProduccion" />
+                <ScalarProperty Name="IdBloque" ColumnName="IdBloque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Presentaciones">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Presentaciones">
+              <MappingFragment StoreEntitySet="Presentaciones">
+                <ScalarProperty Name="IdPresentacion" ColumnName="IdPresentacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="IdProduccion" ColumnName="IdProduccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producciones">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Producciones">
+              <MappingFragment StoreEntitySet="Producciones">
+                <ScalarProperty Name="IdProduccion" ColumnName="IdProduccion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NombrePresentacion" ColumnName="NombrePresentacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="IdTeatro" ColumnName="IdTeatro" />
+                <ScalarProperty Name="IdTipoProd" ColumnName="IdTipoProd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teatros">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Teatros">
+              <MappingFragment StoreEntitySet="Teatros">
+                <ScalarProperty Name="IdTeatro" ColumnName="IdTeatro" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TelServicioCliente" ColumnName="TelServicioCliente" />
+                <ScalarProperty Name="TelTeatro" ColumnName="TelTeatro" />
+                <ScalarProperty Name="TelBoletaria" ColumnName="TelBoletaria" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LinkWeb" ColumnName="LinkWeb" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipos_Produccion">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Tipos_Produccion">
+              <MappingFragment StoreEntitySet="Tipos_Produccion">
+                <ScalarProperty Name="IdTipoProd" ColumnName="IdTipoProd" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transacciones">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Transacciones">
+              <MappingFragment StoreEntitySet="Transacciones">
+                <ScalarProperty Name="NumFactura" ColumnName="NumFactura" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="TipoTransaccion" ColumnName="TipoTransaccion" />
+                <ScalarProperty Name="NumAprobacion" ColumnName="NumAprobacion" />
+                <ScalarProperty Name="NumBoleto" ColumnName="NumBoleto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Proyecto_2Model.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="IdTeatro_usuarios" ColumnName="IdTeatro_usuarios" />
+                <ScalarProperty Name="IdUsuarioHumano" ColumnName="IdUsuarioHumano" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TeatrosxAdmis" TypeName="Proyecto_2Model.TeatrosxAdmis" StoreEntitySet="TeatrosxAdmis">
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="IdUsuario" ColumnName="IdTeatro_X" />
+            </EndProperty>
+            <EndProperty Name="Teatros">
+              <ScalarProperty Name="IdTeatro" ColumnName="IdUsuario_X" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="spAddPrecioBloquePorProduccion" FunctionName="Proyecto_2Model.Store.spAddPrecioBloquePorProduccion" />
+          <FunctionImportMapping FunctionImportName="spAddUnaProduccion" FunctionName="Proyecto_2Model.Store.spAddUnaProduccion" />
+          <FunctionImportMapping FunctionImportName="spAddUnHumano" FunctionName="Proyecto_2Model.Store.spAddUnHumano" />
+          <FunctionImportMapping FunctionImportName="spAddUnPresentacion" FunctionName="Proyecto_2Model.Store.spAddUnPresentacion" />
+          <FunctionImportMapping FunctionImportName="spAddUnTeatro" FunctionName="Proyecto_2Model.Store.spAddUnTeatro" />
+          <FunctionImportMapping FunctionImportName="spAddUnTipoProduccion" FunctionName="Proyecto_2Model.Store.spAddUnTipoProduccion" />
+          <FunctionImportMapping FunctionImportName="spAddUnUsuario" FunctionName="Proyecto_2Model.Store.spAddUnUsuario" />
+          <FunctionImportMapping FunctionImportName="spAsientosNoDisponiblesEnBloque" FunctionName="Proyecto_2Model.Store.spAsientosNoDisponiblesEnBloque" />
+          <FunctionImportMapping FunctionImportName="spAuthenticationUser" FunctionName="Proyecto_2Model.Store.spAuthenticationUser" />
+          <FunctionImportMapping FunctionImportName="spAuthenticationUserName" FunctionName="Proyecto_2Model.Store.spAuthenticationUserName" />
+          <FunctionImportMapping FunctionImportName="spDefineBloque" FunctionName="Proyecto_2Model.Store.spDefineBloque" />
+          <FunctionImportMapping FunctionImportName="spDefineFilas" FunctionName="Proyecto_2Model.Store.spDefineFilas" />
+          <FunctionImportMapping FunctionImportName="spFindBloquesForPresentacion" FunctionName="Proyecto_2Model.Store.spFindBloquesForPresentacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_2Model.spFindBloquesForPresentacion_Result">
+                <ScalarProperty Name="IdBloque" ColumnName="IdBloque" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFindFilasForBloque" FunctionName="Proyecto_2Model.Store.spFindFilasForBloque">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_2Model.spFindFilasForBloque_Result">
+                <ScalarProperty Name="IdFila" ColumnName="IdFila" />
+                <ScalarProperty Name="Letra" ColumnName="Letra" />
+                <ScalarProperty Name="CantAsientos" ColumnName="CantAsientos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFindPrecioXBloque" FunctionName="Proyecto_2Model.Store.spFindPrecioXBloque" />
+          <FunctionImportMapping FunctionImportName="spGetPresentacionesOfProduccionBetweenDates" FunctionName="Proyecto_2Model.Store.spGetPresentacionesOfProduccionBetweenDates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_2Model.spGetPresentacionesOfProduccionBetweenDates_Result">
+                <ScalarProperty Name="IdPresentacion" ColumnName="IdPresentacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetProduccionesBetweenDates" FunctionName="Proyecto_2Model.Store.spGetProduccionesBetweenDates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_2Model.spGetProduccionesBetweenDates_Result">
+                <ScalarProperty Name="IdProduccion" ColumnName="IdProduccion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NombrePresentacion" ColumnName="NombrePresentacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="IdTeatro" ColumnName="IdTeatro" />
+                <ScalarProperty Name="IdTipoProd" ColumnName="IdTipoProd" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetTypeOfUser" FunctionName="Proyecto_2Model.Store.spGetTypeOfUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Proyecto_2Model.spGetTypeOfUser_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spRevisarFecha" FunctionName="Proyecto_2Model.Store.spRevisarFecha" />
+          <FunctionImportMapping FunctionImportName="spUpdateEstado" FunctionName="Proyecto_2Model.Store.spUpdateEstado" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,132 @@
+﻿@model Proyecto_2_BD.Models.Modelo.Teatro_
+
+@{
+    ViewBag.Title = "Nuevo Teatro";
+}
+
+<head>
+    <style>
+        .container2 {
+            width: 350px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        .c3 {
+            text-align: center;
+        }
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .page-section {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .bg-dark {
+            background-image: linear-gradient(to bottom, rgba(92, 77, 66, 0.7) 0%, rgba(92, 77, 66, 0.8) 100%), url('../../Content/assets/img/img.jpg');
+        }
+    </style>
+</head>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <section class="page-section bg-dark text-white">
+        <div class="container text-center">
+            <br>
+            <div class="imgcontainer">
+                <i class="fas fa-4x fa-user-plus text-primary mb-4"></i>
+            </div>
+            <h2 class="text-center mt-0">Nuevo Teatro</h2>
+            <hr class="divider my-3" />
+        </div>
+    </section>
+    <br>
+    <div class="form-horizontal">
+        <div class="container2 text-center">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <h3 class="h4 mb-2 c3">Nombre</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese Nombre" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3 class="h4 mb-2 c3">Dirección</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese Dirección" } })
+                    @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3 class="h4 mb-2 c3">Email</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email_, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese Email" } })
+                    @Html.ValidationMessageFor(model => model.Email_, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3 class="h4 mb-2 c3">Correo Electrónico</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LinkWeb, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese Sitio Web" } })
+                    @Html.ValidationMessageFor(model => model.LinkWeb, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <h3 class="h4 mb-2 c3">Teléfono Teatro</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TelTeatro, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese telefono" } })
+                    @Html.ValidationMessageFor(model => model.TelTeatro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3 class="h4 mb-2 c3">Teléfono Servicio al Cliente</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TelServicioCliente, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese telefono" } })
+                    @Html.ValidationMessageFor(model => model.TelServicioCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3 class="h4 mb-2 c3">Teléfono Boletería</h3>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TelBoletaria, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese telefono" } })
+                    @Html.ValidationMessageFor(model => model.TelBoletaria, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Agregar" class="btn btn-primary btn-xl js-scroll-trigger" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+
+
