@@ -86,6 +86,36 @@ namespace Proyecto_2_BD.Controllers
             return View();
         }
 
+        public ActionResult Producciones()
+        {
+            ViewBag.Lista = db.Producciones.ToList();
+            ViewBag.Codigo = new SelectList(db.Tipos_Produccion.OrderBy(o => o.IdTipoProd), "IdTipoProd", "Tipo");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Producciones(Produccion_ produccion)
+        {
+            return View();
+        }
+
+        public ActionResult Presentaciones()
+        {
+           // Usuarios oUsuario = (Usuarios)System.Web.HttpContext.Current.Session["User"];
+           // ViewBag.Prod = new SelectList(db.Producciones.Where(x => x.IdTeatro == oUsuario.IdTeatro_usuarios), "IdProduccion", "NombrePresentacion");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+         public ActionResult Presentaciones(Presentacion_ presentacion)
+        {
+            return View();
+        }
+
+
+
         // GET: Humanos/Delete/5
         public ActionResult Delete(int? id)
         {

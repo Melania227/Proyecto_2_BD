@@ -74,11 +74,11 @@
                 <button type="button" class="add_field_button btn btn-primary btn-xl js-scroll-trigger">Más</button>
                 <div class="input_fields_wrap">
                     <h3 class="h4 mb-2 c3">Nombre</h3>
-                    <input type="text" name="Dist[0].name" class="field-long" />
+                    <input type="text" name="Dist[0].name" class="field-long" required/>
                     <h3 class="h4 mb-2 c3">Cantidad de Filas</h3>
-                    <input type="number" name="Dist[0].filas" class="field-long" />
+                    <input type="number" name="Dist[0].filas" class="field-long" required/>
                     <h3 class="h4 mb-2 c3">Cantidad de Asientos</h3>
-                    <input type="number" name="Dist[0].sillas" class="field-long" />
+                    <input type="number" name="Dist[0].sillas" class="field-long" required/>
                 </div>
 
                 <div class="form-group">
@@ -108,7 +108,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-			$(wrapper).append('<div><hr class="divider my-3" /><h3 class="h4 mb-2 c3">Nombre</h3><input type="text" name="Dist['+x+'].name" class="field-long" /><h3 class="h4 mb-2 c3">Cantidad de Filas</h3><input type="number" name="Dist['+x+'].filas" class="field-long" /><br><h3 class="h4 mb-2 c3">Cantidad de Asientos</h3><input type="number" name="Dist[0].sillas" class="field-long" /><a href="javascript:void(0);" class="remove_button btn btn-primary btn-xl js-scroll-trigger">Menos</a></div>'); //add input box
+			$(wrapper).append('<div><hr class="divider my-3" /><h3 class="h4 mb-2 c3">Nombre</h3><input type="text" name="Dist['+x+'].name" class="field-long" required/><h3 class="h4 mb-2 c3">Cantidad de Filas</h3><input type="number" name="Dist['+x+'].filas" class="field-long" required/><br><h3 class="h4 mb-2 c3">Cantidad de Asientos</h3><input type="number" name="Dist[0].sillas" class="field-long" required/><a href="javascript:void(0);" class="remove_button btn btn-primary btn-xl js-scroll-trigger">Menos</a></div>'); //add input box
 		}
 	});
 	

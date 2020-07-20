@@ -49,7 +49,7 @@ namespace Proyecto_2_BD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProduccion,Descripcion,NombrePresentacion,Estado,FechaInicio,FechaFin,IdTeatro,IdTipoProd")] Producciones producciones)
+        public ActionResult Create([Bind(Include = "IdProduccion,Descripcion,NombrePresentacion,Estado,FechaInicio,FechaFin,IdTeatro,IdTipoProd,img")] Producciones producciones)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Proyecto_2_BD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProduccion,Descripcion,NombrePresentacion,Estado,FechaInicio,FechaFin,IdTeatro,IdTipoProd")] Producciones producciones)
+        public ActionResult Edit([Bind(Include = "IdProduccion,Descripcion,NombrePresentacion,Estado,FechaInicio,FechaFin,IdTeatro,IdTipoProd,img")] Producciones producciones)
         {
             if (ModelState.IsValid)
             {

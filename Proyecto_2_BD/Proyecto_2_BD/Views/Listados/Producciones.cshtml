@@ -106,7 +106,7 @@
         }
 
         .bg-dark {
-            background-image: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('../../Content/assets/img/RYJ.jpg');
+            background-image: linear-gradient(to bottom, rgba(138, 89, 81, 0.53) 0%, rgba(59, 53, 48, 0.8) 100%), url('../../Content/assets/img/fondo.jpg');
         }
 
         .card {
@@ -123,7 +123,15 @@
         }
 
         img {
-            border-radius: 5px 5px 0 0;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          border-radius: 8px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          height: 200px;
+          width: 600px;
+
         }
 
         .container3 {
@@ -147,9 +155,9 @@
     <div class="container text-center">
         <br>
         <div class="imgcontainer">
-            <i class="fas fa-4x fa-user text-primary mb-4"></i>
+            <i class="fas fa-4x fa-images text-primary mb-4"></i>
         </div>
-        <h2 class="text-center mt-0">Teatros</h2>
+        <h2 class="text-center mt-0">Producciones</h2>
         <hr class="divider my-3" />
     </div>
 </section>
@@ -158,78 +166,121 @@
 
         @foreach (var item in Model)
         {
-            <div class="card" style="width:20%">
-                <img src='../../Content/assets/img/pin.png' alt="Avatar" class="justify-content-center" style="width: 75% ">
-                <div class="container3">
-                    <h3>
-                        <b>
-                            @item.NombrePresentacion
-                        </b>
-                    </h3>
-                    @if (item.Descripcion != null)
+            if (item.Estado != "Confidencial")
+            {
+                <div class="card" style="width:20%">
+                    @if (item.img != "")
                     {
+                        <img src=~/Content/assets/img/@item.img alt="Avatar" class="justify-content-center" style="width: 75% ">
+                    }
+                    else
+                    {
+                        <img src=~/Content/assets/img/imagen.jpg alt="Avatar" class="justify-content-center" style="width: 75% ">
+                    }
+                    <div class="container3">
+                        <h3>
+                            <b>
+                                @item.NombrePresentacion
+                            </b>
+                        </h3>
+                        @if (item.Estado == "Concluida")
+                        {
+                            <b>
+                                La obra ha sido concluida.
+                                ¡Muchas gracias por su apoyo!
+                            </b>
+                        }
+                        else if (item.Estado == "Cancelada")
+                        {
+                            <b>
+                                La obra ha sido cancelada.
+                                Pronto habrá más información.
+                            </b>
+                        }
+                        else
+                        {
+                            if (item.Descripcion != null)
+                            {
 
-                        @item.Descripcion
-                    }
-                    @if (item.Teatros.Nombre != null)
-                    {
-                        <h5>
-                            <b>
-                                Teatro:
-                            </b>
-                        </h5>
-                        @item.Teatros.Nombre
-                    }
-                    @if (item.Tipos_Produccion.Tipo != "")
-                    {
-                        <h5>
-                            <b>
-                                Tipo de producción:
-                            </b>
-                        </h5>
-                        @item.Tipos_Produccion.Tipo
-                    }
-                    @if (item.Estado != null)
-                    {
-                        <h5>
-                            <b>
-                                Estado:
-                            </b>
-                        </h5>
-                        @item.Estado
-                    }
-                    @if (item.FechaInicio != null)
-                    {
-                        <h5>
-                            <b>
-                                Fecha de Apertura:
-                            </b>
-                        </h5>
-                        @item.FechaInicio
-                    }
-                    @if (item.FechaFin != null)
-                    {
-                        <h5>
-                            <b>
-                                Fecha de Cierre:
-                            </b>
-                        </h5>
-                        @item.FechaFin
-                    }
-
-                    <br />
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdProduccion }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdProduccion }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdProduccion })
-
+                                @item.Descripcion
+                            }
+                            if (item.Teatros.Nombre != null)
+                            {
+                                <h5>
+                                    <b>
+                                        Teatro:
+                                    </b>
+                                </h5>
+                                @item.Teatros.Nombre
+                            }
+                            if (item.Tipos_Produccion.Tipo != "")
+                            {
+                                <h5>
+                                    <b>
+                                        Tipo de producción:
+                                    </b>
+                                </h5>
+                                @item.Tipos_Produccion.Tipo
+                            }
+                            if (item.Estado != null)
+                            {
+                                <h5>
+                                    <b>
+                                        Estado:
+                                    </b>
+                                </h5>
+                                @item.Estado
+                            }
+                            if (item.Estado == "Abierta")
+                            {
+                                if (item.FechaInicio != null)
+                                {
+                                    <h5>
+                                        <b>
+                                            Fecha de Apertura:
+                                        </b>
+                                    </h5>
+                                    @item.FechaInicio
+                                }
+                                if (item.FechaFin != null)
+                                {
+                                    <h5>
+                                        <b>
+                                            Fecha de Cierre:
+                                        </b>
+                                    </h5>
+                                    @item.FechaFin
+                                }
+                            }
+                            <br />
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdProduccion })
+                        }
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+
+                <div class="card" style="width:20%">
+                    <img src=~/Content/assets/img/question.png alt="Avatar" class="justify-content-center" style="width: 75% ">
+                    <div class="container3 justify-content-center">
+                        <h3 class="text-center mt-0">
+                            <b >
+                                ¡Próximamente!
+                            </b>
+                        </h3>
+
+
+                        <br />
+                    </div>
+                </div>
+            }
+
+
 
 
         }
         <br />
     </div>
 </div>
-
-
 

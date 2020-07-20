@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9f826e40a46c44868d5ec7af8621cf4b" Name="Diagram1">
+      <Diagram DiagramId="7e9a68b6d35d4109a2853dabc65abca8" Name="Diagram1">
         <EntityTypeShape EntityType="Proyecto_2Model.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Proyecto_2Model.Bloques" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Proyecto_2Model.Boletos" Width="1.5" PointX="12" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Proyecto_2Model.Boletos" Width="1.5" PointX="12" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Proyecto_2Model.Filas" Width="1.5" PointX="9.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Proyecto_2Model.Humanos" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Proyecto_2Model.Precio_X_Bloque" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Proyecto_2Model.Humanos" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Proyecto_2Model.Precio_X_Bloque" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Proyecto_2Model.Presentaciones" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Proyecto_2Model.Producciones" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Proyecto_2Model.Teatros" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Proyecto_2Model.Tipos_Produccion" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Proyecto_2Model.Teatros" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Proyecto_2Model.Tipos_Produccion" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Proyecto_2Model.Transacciones" Width="1.5" PointX="14.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Proyecto_2Model.Usuarios" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Proyecto_2Model.Usuarios" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="Proyecto_2Model.FK_Bloques_IdTeatro" ManuallyRouted="false" />
         <AssociationConnector Association="Proyecto_2Model.FK_Filas_IdBloques" ManuallyRouted="false" />
         <AssociationConnector Association="Proyecto_2Model.FK_PrecioXBloque_IdBloque" ManuallyRouted="false" />

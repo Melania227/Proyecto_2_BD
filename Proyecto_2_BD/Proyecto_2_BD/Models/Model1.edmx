@@ -83,6 +83,7 @@
           <Property Name="FechaFin" Type="date" />
           <Property Name="IdTeatro" Type="int" Nullable="false" />
           <Property Name="IdTipoProd" Type="int" Nullable="false" />
+          <Property Name="img" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Teatros">
           <Key>
@@ -610,6 +611,7 @@
           <Property Name="FechaFin" Type="DateTime" Precision="0" />
           <Property Name="IdTeatro" Type="Int32" Nullable="false" />
           <Property Name="IdTipoProd" Type="Int32" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Precio_X_Bloque" Relationship="Self.FK_PrecioXBloque_IdProduccion" FromRole="Producciones" ToRole="Precio_X_Bloque" />
           <NavigationProperty Name="Presentaciones" Relationship="Self.FK_Presentaciones_IdProduccion" FromRole="Producciones" ToRole="Presentaciones" />
           <NavigationProperty Name="Teatros" Relationship="Self.FK_Producciones_IdTeatro" FromRole="Producciones" ToRole="Teatros" />
@@ -1040,6 +1042,7 @@
           <Property Type="DateTime" Name="FechaFin" Nullable="true" />
           <Property Type="Int32" Name="IdTeatro" Nullable="false" />
           <Property Type="Int32" Name="IdTipoProd" Nullable="false" />
+          <Property Type="String" Name="img" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="spGetTypeOfUser_Result">
@@ -1137,6 +1140,7 @@
                 <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
                 <ScalarProperty Name="IdTeatro" ColumnName="IdTeatro" />
                 <ScalarProperty Name="IdTipoProd" ColumnName="IdTipoProd" />
+                <ScalarProperty Name="img" ColumnName="img" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1247,6 +1251,7 @@
                 <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
                 <ScalarProperty Name="IdTeatro" ColumnName="IdTeatro" />
                 <ScalarProperty Name="IdTipoProd" ColumnName="IdTipoProd" />
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </ComplexTypeMapping>
             </ResultMapping>

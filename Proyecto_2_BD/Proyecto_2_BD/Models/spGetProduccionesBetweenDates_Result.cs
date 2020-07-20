@@ -21,6 +21,7 @@ namespace Proyecto_2_BD.Models
         public Nullable<System.DateTime> FechaFin { get; set; }
         public int IdTeatro { get; set; }
         public int IdTipoProd { get; set; }
+        public string img { get; set; }
         public string Nombre { get; set; }
     }
 }

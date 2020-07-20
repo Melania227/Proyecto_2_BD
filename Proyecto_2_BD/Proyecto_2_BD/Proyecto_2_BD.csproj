@@ -170,6 +170,8 @@
     </Compile>
     <Compile Include="Models\Modelo\Distribucion.cs" />
     <Compile Include="Models\Modelo\Humano_Usuario.cs" />
+    <Compile Include="Models\Modelo\Presentacion_.cs" />
+    <Compile Include="Models\Modelo\Produccion_.cs" />
     <Compile Include="Models\Modelo\Teatro_.cs" />
     <Compile Include="Models\Precio_X_Bloque.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -210,9 +212,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\img\BdS.jpg" />
     <Content Include="Content\assets\img\bg-masthead.jpg" />
     <Content Include="Content\assets\img\db.jpg" />
     <Content Include="Content\assets\img\favicon.ico" />
+    <Content Include="Content\assets\img\Fil.jpg" />
+    <Content Include="Content\assets\img\fondo.jpg" />
+    <Content Include="Content\assets\img\imagen.jpg" />
+    <Content Include="Content\assets\img\jc.jpg" />
     <Content Include="Content\assets\img\pin.png" />
     <Content Include="Content\assets\img\portfolio\fullsize\1.jpg" />
     <Content Include="Content\assets\img\portfolio\fullsize\2.jpg" />
@@ -227,6 +234,7 @@
     <Content Include="Content\assets\img\portfolio\thumbnails\4.jpg" />
     <Content Include="Content\assets\img\portfolio\thumbnails\5.jpg" />
     <Content Include="Content\assets\img\portfolio\thumbnails\6.jpg" />
+    <Content Include="Content\assets\img\question.png" />
     <Content Include="Content\assets\img\RYJ.jpg" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\js\scripts.js" />
@@ -284,6 +292,8 @@
     <Content Include="Views\Add\Bloques.cshtml" />
     <Content Include="Views\Listados\Teatros.cshtml" />
     <Content Include="Views\Listados\Producciones.cshtml" />
+    <Content Include="Views\Add\Presentaciones.cshtml" />
+    <Content Include="Views\Add\Producciones.cshtml" />
     <Content Include="Views\Producciones\Create.cshtml" />
     <Content Include="Views\Producciones\Delete.cshtml" />
     <Content Include="Views\Producciones\Details.cshtml" />

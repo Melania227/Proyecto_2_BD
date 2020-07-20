@@ -20,5 +20,11 @@ namespace Proyecto_2_BD.Controllers
         {
             return View(db.Producciones.ToList());
         }
+
+        [HttpPost]
+        public ActionResult Producciones(string myfile)
+        {
+            return View(db.Producciones.ToList());
+        }
     }
 }
